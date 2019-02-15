@@ -5,6 +5,12 @@
       <button (click)='onDelete(category)' mat-icon-button>
         <mat-icon>delete</mat-icon>
       </button>
+      <mat-list>
+          <app-topic 
+          *ngFor='let topic of topics' 
+          [topic]='topic' 
+          (deleteTopic)='deleteTopic($event)'></app-topic>
+      </mat-list>
     </mat-card-content>
   </mat-card>
 </div>

@@ -18,11 +18,13 @@ export class CategoryService {
   constructor(private http:HttpClient) { }
 
   getCategories():Observable<Category[]> {
-    return this.http.get<Category[]>(this.categoriesUrl);
+    const embedTopics:string = '_embed=topics';
+    const url:string = `${this.categoriesUrl}?${embedTopics}`;
+    return this.http.get<Category[]>(url);
   }
 
   deleteCategory(category:Category):Observable<Category> {
-    const url = `${this.categoriesUrl}/${category.id}`;
+    const url:string = `${this.categoriesUrl}/${category.id}`;
     return this.http.delete<Category>(url, httpOptions);
   }
 

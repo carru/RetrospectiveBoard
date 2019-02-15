@@ -1,6 +1,6 @@
 export class Topic {
     id:number;
     text:string;
-    category?:number
+    categoryId?:number
     points?:number
 }

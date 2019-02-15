@@ -14,7 +14,7 @@ export class TopicsListComponent implements OnInit {
 
   ngOnInit() {
     this.topicService.getTopics().subscribe(topics => {
-      this.topics = topics;
+      this.topics = topics.filter(t => t.categoryId == null);
     })
   }
 
