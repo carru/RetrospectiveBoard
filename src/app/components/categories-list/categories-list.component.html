@@ -1,0 +1,7 @@
+<app-new-category (addCategory)='addCategory($event)'></app-new-category>
+<mat-list>
+    <app-category 
+    *ngFor='let category of categories' 
+    [category]='category' 
+    (deleteCategory)='deleteCategory($event)'></app-category>
+</mat-list>

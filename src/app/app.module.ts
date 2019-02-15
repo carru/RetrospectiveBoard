@@ -9,13 +9,19 @@ import { TopicsListComponent } from './components/topics-list/topics-list.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { NewTopicComponent } from './components/new-topic/new-topic.component';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
+import { CategoryComponent } from './components/category/category.component';
+import { NewCategoryComponent } from './components/new-category/new-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopicComponent,
     TopicsListComponent,
-    NewTopicComponent
+    NewTopicComponent,
+    CategoriesListComponent,
+    CategoryComponent,
+    NewCategoryComponent
   ],
   imports: [
     BrowserModule,

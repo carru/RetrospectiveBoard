@@ -12,5 +12,15 @@
       "id": 3,
       "text": "prisoners"
     }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "SCRUM"
+    },
+    {
+      "id": 2,
+      "name": "Environments"
+    }
   ]
 }
