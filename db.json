@@ -36,11 +36,13 @@
   "categories": [
     {
       "id": 1,
-      "name": "SCRUM"
+      "name": "SCRUM",
+      "colour": "#efff8f"
     },
     {
       "id": 2,
-      "name": "Environments"
+      "name": "Environments",
+      "colour": "#8fc6ff"
     }
   ]
 }

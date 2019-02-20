@@ -28,9 +28,4 @@ export class CategoryComponent implements OnInit {
   deleteTopic(topic:Topic) {
     this.deleteTopicInCategory.emit(topic);
   }
-
-  // deleteTopic(topic:Topic) {
-  //   this.topics = this.topics.filter(t => t.id !== topic.id);
-  //   this.topicService.deleteTopic(topic).subscribe();
-  // }
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppComponent } from './app.component';
 import { TopicComponent } from './components/topic/topic.component';
@@ -30,7 +31,8 @@ import { NewCategoryComponent } from './components/new-category/new-category.com
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
