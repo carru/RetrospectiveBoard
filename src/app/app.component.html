@@ -1,8 +1,10 @@
-<div class="row">
-    <div class="column">
-        <app-topics-list></app-topics-list>
+<div class="divMain">
+    <div class="divColumn1">
+        <app-new-topic (addTopic)='createTopic($event)'></app-new-topic>
+        <app-topics-list [topics]='uncategorizedTopics' (deleteTopic)='deleteUncategorizedTopic($event)'></app-topics-list>
     </div>
-    <div class="column">
-        <app-categories-list></app-categories-list>
+    <div class="divColumn2">
+        <app-new-category (addCategory)='createCategory($event)'></app-new-category>
+        <app-categories-list [categories]='categories' (deleteCategory)='deleteCategory($event)' (deleteTopic)='deleteTopicInCategory($event)'></app-categories-list>
     </div>
 </div>

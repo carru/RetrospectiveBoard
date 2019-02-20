@@ -6,15 +6,9 @@ import { Topic } from 'src/app/models/Topic';
   templateUrl: './new-topic.component.html',
   styleUrls: ['./new-topic.component.css']
 })
-export class NewTopicComponent implements OnInit {
+export class NewTopicComponent {
   @Output() addTopic: EventEmitter<any> = new EventEmitter();
-
   text:string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   onSubmit() {
     this.addTopic.emit({

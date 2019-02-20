@@ -1,32 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Topic } from '../../models/Topic';
-import { TopicService } from '../../services/topic.service';
 
 @Component({
   selector: 'app-topics-list',
   templateUrl: './topics-list.component.html',
   styleUrls: ['./topics-list.component.css']
 })
-export class TopicsListComponent implements OnInit {
-  topics:Topic[];
+export class TopicsListComponent {
+  @Input() topics:Topic[];
+  @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
 
-  constructor(private topicService:TopicService) { }
-
-  ngOnInit() {
-    this.topicService.getTopics().subscribe(topics => {
-      this.topics = topics.filter(t => t.categoryId == null);
-    })
+  deleteTopicInList(topic:Topic) {
+    this.deleteTopic.emit(topic);
   }
 
-  deleteTopic(topic:Topic) {
-    this.topics = this.topics.filter(t => t.id !== topic.id);
-    this.topicService.deleteTopic(topic).subscribe();
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.topics, event.previousIndex, event.currentIndex);
   }
-
-  addTopic(topic:Topic) {
-    this.topicService.addTopic(topic).subscribe(topic => {
-      this.topics.push(topic);
-    })
-  }
-
 }

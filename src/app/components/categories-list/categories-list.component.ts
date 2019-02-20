@@ -1,32 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Category } from '../../models/Category';
-import { CategoryService } from '../../services/category.service';
+import { Topic } from 'src/app/models/Topic';
 
 @Component({
   selector: 'app-categories-list',
   templateUrl: './categories-list.component.html',
   styleUrls: ['./categories-list.component.css']
 })
-export class CategoriesListComponent implements OnInit {
-  categories:Category[];
+export class CategoriesListComponent {
+  @Input() categories:Category[];
+  @Output() deleteCategory: EventEmitter<Category> = new EventEmitter();
+  @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
 
-  constructor(private categoryService:CategoryService) { }
-
-  ngOnInit() {
-    this.categoryService.getCategories().subscribe(categories => {
-      this.categories = categories;
-    })
+  deleteCategoryInList(category:Category) {
+    this.deleteCategory.emit(category);
   }
 
-  deleteCategory(category:Category) {
-    this.categories = this.categories.filter(c => c.id !== category.id);
-    this.categoryService.deleteCategory(category).subscribe();
+  deleteTopicInCategoryInList(topic:Topic) {
+    this.deleteTopic.emit(topic);
   }
-
-  addCategory(category:Category) {
-    this.categoryService.addCategory(category).subscribe(category => {
-      this.categories.push(category);
-    })
-  }
-
 }

@@ -11,6 +11,7 @@ import { TopicService } from 'src/app/services/topic.service';
 export class CategoryComponent implements OnInit {
   @Input() category:Category;
   @Output() deleteCategory: EventEmitter<Category> = new EventEmitter();
+  @Output() deleteTopicInCategory: EventEmitter<Topic> = new EventEmitter();
 
   topics:Topic[];
 
@@ -25,8 +26,11 @@ export class CategoryComponent implements OnInit {
   }
 
   deleteTopic(topic:Topic) {
-    this.topics = this.topics.filter(t => t.id !== topic.id);
-    this.topicService.deleteTopic(topic).subscribe();
+    this.deleteTopicInCategory.emit(topic);
   }
 
+  // deleteTopic(topic:Topic) {
+  //   this.topics = this.topics.filter(t => t.id !== topic.id);
+  //   this.topicService.deleteTopic(topic).subscribe();
+  // }
 }

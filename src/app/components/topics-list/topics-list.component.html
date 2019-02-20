@@ -1,7 +1,4 @@
-<app-new-topic (addTopic)='addTopic($event)'></app-new-topic>
-<mat-list>
-    <app-topic 
-    *ngFor='let topic of topics' 
-    [topic]='topic' 
-    (deleteTopic)='deleteTopic($event)'></app-topic>
-</mat-list>
+<div cdkDropList class="divTopicsList" (cdkDropListDropped)="drop($event)">
+    <app-topic class="divTopic" cdkDrag *ngFor='let topic of topics' [topic]='topic'
+        (deleteTopic)='deleteTopicInList($event)'></app-topic>
+</div>

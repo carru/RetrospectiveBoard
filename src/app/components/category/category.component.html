@@ -1,16 +1,12 @@
-<div class='card-div'>
-  <mat-card>
-    <mat-card-content>
-      {{category.name}}
-      <button (click)='onDelete(category)' mat-icon-button>
-        <mat-icon>delete</mat-icon>
-      </button>
-      <mat-list>
-          <app-topic 
-          *ngFor='let topic of topics' 
-          [topic]='topic' 
-          (deleteTopic)='deleteTopic($event)'></app-topic>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-card>
+  <mat-card-content>
+    {{category.name}}
+    <button (click)='onDelete(category)' mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+    <!-- <mat-list>
+      <app-topic *ngFor='let topic of topics' [topic]='topic' (deleteTopic)='deleteTopic($event)'></app-topic>
+    </mat-list> -->
+    <app-topics-list [topics]='topics' (deleteTopic)='deleteTopic($event)'></app-topics-list>
+  </mat-card-content>
+</mat-card>
