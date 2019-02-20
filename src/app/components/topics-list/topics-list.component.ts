@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Topic } from '../../models/Topic';
 
 @Component({
@@ -8,14 +8,21 @@ import { Topic } from '../../models/Topic';
   styleUrls: ['./topics-list.component.css']
 })
 export class TopicsListComponent {
-  @Input() topics:Topic[];
+  @Input() topics: Topic[];
   @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
 
-  deleteTopicInList(topic:Topic) {
+  deleteTopicInList(topic: Topic) {
     this.deleteTopic.emit(topic);
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.topics, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 }

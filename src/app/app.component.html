@@ -1,4 +1,4 @@
-<div class="divMain">
+<div class="divMain" cdkDropListGroup>
     <div class="divColumn1">
         <app-new-topic (addTopic)='createTopic($event)'></app-new-topic>
         <app-topics-list [topics]='uncategorizedTopics' (deleteTopic)='deleteUncategorizedTopic($event)'></app-topics-list>
