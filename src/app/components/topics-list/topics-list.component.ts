@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Topic } from '../../models/Topic';
 
@@ -7,9 +7,15 @@ import { Topic } from '../../models/Topic';
   templateUrl: './topics-list.component.html',
   styleUrls: ['./topics-list.component.css']
 })
-export class TopicsListComponent {
+export class TopicsListComponent implements OnInit {
   @Input() topics: Topic[];
   @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
+
+  ngOnInit() {
+    if (typeof this.topics == 'undefined') {
+      this.topics = [];
+    }
+  }
 
   deleteTopicInList(topic: Topic) {
     this.deleteTopic.emit(topic);
