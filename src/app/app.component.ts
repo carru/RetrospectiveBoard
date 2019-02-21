@@ -47,13 +47,6 @@ export class AppComponent implements OnInit {
   }
 
   deleteTopicInCategory(topic:Topic) {
-    console.log('TODO: Remove from UI (it\'s deleted in backend)');
-    // var categoryBeingModified:Category = this.categories.find(c => c.id == topic.categoryId);
-    // console.log(categoryBeingModified);
-    // console.log(categoryBeingModified.topics);
-    // categoryBeingModified.topics = categoryBeingModified.topics.filter(t => t.id !== topic.id);
-    // console.log(categoryBeingModified);
-    // console.log(categoryBeingModified.topics);
     this.topicService.deleteTopic(topic).subscribe();
   }
 }

@@ -18,6 +18,7 @@ export class TopicsListComponent implements OnInit {
   }
 
   deleteTopicInList(topic: Topic) {
+    this.topics = this.topics.filter(t => t.id != topic.id);
     this.deleteTopic.emit(topic);
   }
 
