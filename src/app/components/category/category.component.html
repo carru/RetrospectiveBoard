@@ -8,6 +8,6 @@
     </button>
   </mat-card-title>
   <mat-card-content>
-    <app-topics-list [topics]='topics' (deleteTopic)='deleteTopic($event)'></app-topics-list>
+    <app-topics-list [topics]='topics' [categoryId]='category.id' (deleteTopic)='deleteTopic($event)'></app-topics-list>
   </mat-card-content>
 </mat-card>

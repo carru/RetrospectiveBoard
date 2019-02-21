@@ -35,4 +35,9 @@ export class TopicService {
   addTopic(topic:Topic):Observable<Topic> {
     return this.http.post<Topic>(this.topicsUrl, topic, httpOptions);
   }
+
+  updateTopic(topic:Topic):Observable<Topic> {
+    const url:string = `${this.topicsUrl}/${topic.id}`;
+    return this.http.put<Topic>(url, topic, httpOptions);
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Topic } from '../../models/Topic';
+import { TopicService } from 'src/app/services/topic.service';
 
 @Component({
   selector: 'app-topics-list',
@@ -9,7 +10,10 @@ import { Topic } from '../../models/Topic';
 })
 export class TopicsListComponent implements OnInit {
   @Input() topics: Topic[];
+  @Input() categoryId: number;
   @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
+
+  constructor(private topicService:TopicService) {}
 
   ngOnInit() {
     if (typeof this.topics == 'undefined') {
@@ -30,6 +34,9 @@ export class TopicsListComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+      let topic: Topic = event.container.data[event.currentIndex] as unknown as Topic;
+      topic.categoryId = this.categoryId;
+      this.topicService.updateTopic(topic).subscribe();
     }
   }
 }
