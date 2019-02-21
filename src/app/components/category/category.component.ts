@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Category } from '../../models/Category';
 import { Topic } from 'src/app/models/Topic';
 import { TopicService } from 'src/app/services/topic.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-category',
@@ -15,7 +16,7 @@ export class CategoryComponent implements OnInit {
 
   topics:Topic[];
 
-  constructor(private topicService:TopicService) { }
+  constructor(private topicService:TopicService, private categoryService:CategoryService) { }
 
   ngOnInit() {
     this.topics = this.category.topics;
@@ -27,5 +28,10 @@ export class CategoryComponent implements OnInit {
 
   deleteTopic(topic:Topic) {
     this.deleteTopicInCategory.emit(topic);
+  }
+
+  onColourChange(colour:string) {
+    this.category.colour = colour;
+    this.categoryService.updateCategory(this.category).subscribe();
   }
 }

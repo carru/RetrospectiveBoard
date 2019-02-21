@@ -31,4 +31,9 @@ export class CategoryService {
   addCategory(category:Category):Observable<Category> {
     return this.http.post<Category>(this.categoriesUrl, category, httpOptions);
   }
+
+  updateCategory(category:Category):Observable<Category> {
+    const url:string = `${this.categoriesUrl}/${category.id}`;
+    return this.http.put<Category>(url, category, httpOptions);
+  }
 }
