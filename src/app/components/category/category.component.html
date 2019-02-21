@@ -1,13 +1,12 @@
 <mat-card [style.background-color]="category.colour" class="cardCategory">
-  <mat-card-header class="cardCategoryHeader">
-    <input mat-card-avatar [(colorPicker)]="category.colour" [style.background]="category.colour" (colorPickerClose)="onColourChange($event)"/>
-    <mat-card-title class="cardCategoryTitle">
-      {{category.name}}
-      <button (click)='onDelete(category)' mat-icon-button>
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-card-title>
-  </mat-card-header>
+  <mat-card-title>
+    <i class="material-icons" [(colorPicker)]="category.colour"
+      (colorPickerClose)="onColourChange($event)">color_lens</i>
+    {{category.name}}
+    <button (click)='onDelete(category)' mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-title>
   <mat-card-content>
     <app-topics-list [topics]='topics' (deleteTopic)='deleteTopic($event)'></app-topics-list>
   </mat-card-content>
