@@ -1,3 +1,7 @@
+<div class="divButtons">
+    <button mat-raised-button color="primary" (click)='sort()'>Sort</button>
+    <button mat-raised-button color="warn" (click)='clearCounters()'>Clear counters</button>
+</div>
 <mat-list>
     <app-category *ngFor='let category of categories' [category]='category'
         (deleteCategory)='deleteCategoryInList($event)' (deleteTopicInCategory)='deleteTopicInCategoryInList($event)'>

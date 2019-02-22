@@ -32,6 +32,18 @@ export class CategoryComponent implements OnInit {
 
   onColourChange(colour:string) {
     this.category.colour = colour;
-    this.categoryService.updateCategory(this.category).subscribe();
+    this.saveCategory(this.category);
+  }
+
+  saveCategory(category:Category) {
+    this.categoryService.updateCategory(category).subscribe();
+  }
+
+  onPlusOne(category:Category) {
+    if (typeof this.category.points == 'undefined') {
+      this.category.points = 0;
+    }
+    this.category.points++;
+    this.saveCategory(this.category);
   }
 }
