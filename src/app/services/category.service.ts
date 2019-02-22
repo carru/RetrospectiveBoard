@@ -18,7 +18,7 @@ export class CategoryService {
   constructor(private http:HttpClient) { }
 
   getCategories():Observable<Category[]> {
-    const embedTopics:string = 'filter=%7B%22include%22%3A%22topics%22%7D';
+    const embedTopics:string = 'filter[include]=topics';
     const url:string = `${this.categoriesUrl}?${embedTopics}`;
     return this.http.get<Category[]>(url);
   }
