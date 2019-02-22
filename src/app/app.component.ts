@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
 
   deleteCategory(category:Category) {
     this.categories = this.categories.filter(c => c.id !== category.id);
-    this.categoryService.deleteCategory(category).subscribe();
+    this.categoryService.deleteTopicsOfCategory(category).subscribe(c => {
+      this.categoryService.deleteCategory(category).subscribe();
+    })
   }
 
   deleteTopicInCategory(topic:Topic) {

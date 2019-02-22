@@ -13,16 +13,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TopicService {
-  topicsUrl:string = 'http://localhost:3000/topics';
+  topicsUrl:string = 'http://localhost:3000/api/topics';
 
   constructor(private http:HttpClient) { }
 
   getTopics():Observable<Topic[]> {
-    // This operator is not yet merged (or even implemented),
-    // see https://github.com/typicode/json-server/issues/510
-    // Workaround: get all and filter in component
-    // const filterNoCategory:string = 'categoryId_is_null';
-    // const url:string = `${this.topicsUrl}?${filterNoCategory}`;
     const url:string = this.topicsUrl;
     return this.http.get<Topic[]>(url);
   }
