@@ -31,6 +31,10 @@ export class CategoriesListComponent {
   }
 
   sort() {
-    ;
+    this.categories.sort((a, b) => {
+      let aa = (typeof a.points == 'undefined') ? 0 : a.points;
+      let bb = (typeof b.points == 'undefined') ? 0 : b.points;
+      return bb - aa;
+    });
   }
 }
