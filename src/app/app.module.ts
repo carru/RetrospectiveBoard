@@ -14,6 +14,7 @@ import { NewTopicComponent } from './components/new-topic/new-topic.component';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NewCategoryComponent } from './components/new-category/new-category.component';
+import { DeleteEverythingConfirmationDialogComponent } from './components/delete-everything-confirmation-dialog/delete-everything-confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,11 @@ import { NewCategoryComponent } from './components/new-category/new-category.com
     NewTopicComponent,
     CategoriesListComponent,
     CategoryComponent,
-    NewCategoryComponent
+    NewCategoryComponent,
+    DeleteEverythingConfirmationDialogComponent
+  ],
+  entryComponents: [
+    DeleteEverythingConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,

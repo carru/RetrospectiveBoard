@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Topic } from './models/Topic';
 import { TopicService } from './services/topic.service';
 import { Category } from './models/Category';
 import { CategoryService } from './services/category.service';
+import { MatDialog } from '@angular/material';
+import { DeleteEverythingConfirmationDialogComponent } from './components/delete-everything-confirmation-dialog/delete-everything-confirmation-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,7 @@ export class AppComponent implements OnInit {
   uncategorizedTopics:Topic[];
   categories:Category[];
 
-  constructor(private topicService:TopicService, private categoryService:CategoryService) { }
+  constructor(private topicService:TopicService, private categoryService:CategoryService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.topicService.getTopics().subscribe(topics => {
@@ -22,6 +24,14 @@ export class AppComponent implements OnInit {
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
     })
+  }
+
+  deleteEverything(): void {
+    const dialogRef = this.dialog.open(DeleteEverythingConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 
   createTopic(topic:Topic) {
