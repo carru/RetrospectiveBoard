@@ -30,7 +30,12 @@ export class AppComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteEverythingConfirmationDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if (result) {
+        this.categories.forEach(c => this.deleteCategory(c));
+        this.uncategorizedTopics.forEach(t => this.topicService.deleteTopic(t).subscribe());
+        this.categories = [];
+        this.uncategorizedTopics = [];
+      }
     });
   }
 

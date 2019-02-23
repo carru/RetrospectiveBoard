@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Topic } from '../models/Topic';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TopicService {
-  topicsUrl:string = 'http://localhost:3000/api/topics';
+  topicsUrl:string = `${environment.apiUrl}topics`;
 
   constructor(private http:HttpClient) { }
 

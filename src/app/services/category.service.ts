@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../models/Category';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CategoryService {
-  categoriesUrl:string = 'http://localhost:3000/api/categories';
+  categoriesUrl:string = `${environment.apiUrl}categories`;
 
   constructor(private http:HttpClient) { }
 
