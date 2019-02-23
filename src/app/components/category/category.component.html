@@ -2,7 +2,7 @@
   <mat-card-title>
     <div class="leftButtons">
       <span class="material-icons" [(colorPicker)]="category.colour"
-        (colorPickerClose)="onColourChange($event)">color_lens</span>
+        (colorPickerClose)="onColourChange($event)" [cpPresetColors]='presetColours'>color_lens</span>
       <button (click)='onPlusOne(category)' mat-icon-button>
         <mat-icon>exposure_plus_1</mat-icon>
       </button>

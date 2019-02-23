@@ -15,11 +15,13 @@ export class CategoryComponent implements OnInit {
   @Output() deleteTopicInCategory: EventEmitter<Topic> = new EventEmitter();
 
   topics:Topic[];
+  presetColours: string[];
 
   constructor(private topicService:TopicService, private categoryService:CategoryService) { }
 
   ngOnInit() {
     this.topics = this.category.topics;
+    this.presetColours = ['#90a4ae', '#ff8a65', '#ffd54f', '#aed581', '#4db6ac', '#4fc3f7', '#7986cb', '#ba68c8', '#e57373'];
   }
 
   onDelete(category:Category) {
