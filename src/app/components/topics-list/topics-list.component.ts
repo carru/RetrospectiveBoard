@@ -11,6 +11,7 @@ import { TopicService } from 'src/app/services/topic.service';
 export class TopicsListComponent implements OnInit {
   @Input() topics: Topic[];
   @Input() categoryId: number;
+  @Input() topicBackground: string;
   @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
 
   constructor(private topicService:TopicService) {}

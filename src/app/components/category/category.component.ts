@@ -16,11 +16,13 @@ export class CategoryComponent implements OnInit {
 
   topics:Topic[];
   presetColours: string[];
+  topicBackground: string;
 
   constructor(private topicService:TopicService, private categoryService:CategoryService) { }
 
   ngOnInit() {
     this.topics = this.category.topics;
+    this.onColorPickerChange(this.category.colour);
     this.presetColours = ['#90a4ae', '#ff8a65', '#ffd54f', '#aed581', '#4db6ac', '#4fc3f7', '#7986cb', '#ba68c8', '#e57373'];
   }
 
@@ -32,9 +34,13 @@ export class CategoryComponent implements OnInit {
     this.deleteTopicInCategory.emit(topic);
   }
 
-  onColourChange(colour:string) {
+  onColorPickerClose(colour:string) {
     this.category.colour = colour;
     this.saveCategory(this.category);
+  }
+
+  onColorPickerChange(colour:string) {
+    this.topicBackground = `${colour}aa`;
   }
 
   saveCategory(category:Category) {

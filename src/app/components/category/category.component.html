@@ -1,8 +1,9 @@
 <mat-card [style.background-color]="category.colour" class="cardCategory">
   <mat-card-title>
     <div class="leftButtons">
-      <span class="material-icons" [(colorPicker)]="category.colour"
-        (colorPickerClose)="onColourChange($event)" [cpPresetColors]='presetColours'>color_lens</span>
+      <span class="material-icons" [(colorPicker)]="category.colour" [cpAlphaChannel]="disabled" [cpOutputFormat]="hex"
+        (colorPickerChange)="onColorPickerChange($event)" (colorPickerClose)="onColorPickerClose($event)"
+        [cpPresetColors]='presetColours'>color_lens</span>
       <button (click)='onPlusOne(category)' mat-icon-button>
         <mat-icon>exposure_plus_1</mat-icon>
       </button>
@@ -13,6 +14,7 @@
     </button>
   </mat-card-title>
   <mat-card-content>
-    <app-topics-list [topics]='topics' [categoryId]='category.id' (deleteTopic)='deleteTopic($event)'></app-topics-list>
+    <app-topics-list [topics]='topics' [categoryId]='category.id' [topicBackground]='topicBackground'
+      (deleteTopic)='deleteTopic($event)'></app-topics-list>
   </mat-card-content>
 </mat-card>
