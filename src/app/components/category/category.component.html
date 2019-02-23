@@ -1,10 +1,12 @@
 <mat-card [style.background-color]="category.colour" class="cardCategory">
   <mat-card-title>
-    <i class="material-icons" [(colorPicker)]="category.colour"
-      (colorPickerClose)="onColourChange($event)">color_lens</i>
-    <button (click)='onPlusOne(category)' mat-icon-button>
-      <mat-icon>exposure_plus_1</mat-icon>
-    </button>
+    <div class="leftButtons">
+      <span class="material-icons" [(colorPicker)]="category.colour"
+        (colorPickerClose)="onColourChange($event)">color_lens</span>
+      <button (click)='onPlusOne(category)' mat-icon-button>
+        <mat-icon>exposure_plus_1</mat-icon>
+      </button>
+    </div>
     <span matBadge={{category.points}} matBadgeOverlap="false" matBadgeColor="accent">{{category.name}}</span>
     <button (click)='onDelete(category)' mat-icon-button>
       <mat-icon>delete</mat-icon>
