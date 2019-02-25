@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Category } from '../../models/Category';
 import { Topic } from 'src/app/models/Topic';
 import { CategoryService } from 'src/app/services/category.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-categories-list',
@@ -13,7 +14,7 @@ export class CategoriesListComponent {
   @Output() deleteCategory: EventEmitter<Category> = new EventEmitter();
   @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
 
-  constructor(private categoryService:CategoryService) { }
+  constructor(private categoryService:CategoryService, private socketService:SocketService) { }
 
   deleteCategoryInList(category:Category) {
     this.deleteCategory.emit(category);
@@ -26,7 +27,9 @@ export class CategoriesListComponent {
   clearCounters() {
     this.categories.forEach(c => {
       c.points = undefined;
-      this.categoryService.updateCategory(c).subscribe();
+      this.categoryService.updateCategory(c).subscribe( () => {
+        this.socketService.notifyDataHasChanged();
+      });
     });
   }
 

@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Topic } from '../../models/Topic';
 import { TopicService } from 'src/app/services/topic.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-topics-list',
@@ -14,7 +15,7 @@ export class TopicsListComponent implements OnInit {
   @Input() topicBackground: string;
   @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
 
-  constructor(private topicService:TopicService) {}
+  constructor(private topicService:TopicService, private socketService:SocketService) {}
 
   ngOnInit() {
     if (typeof this.topics == 'undefined') {
@@ -37,7 +38,9 @@ export class TopicsListComponent implements OnInit {
         event.currentIndex);
       let topic: Topic = event.container.data[event.currentIndex] as unknown as Topic;
       topic.categoryId = this.categoryId;
-      this.topicService.updateTopic(topic).subscribe();
+      this.topicService.updateTopic(topic).subscribe( () => {
+        this.socketService.notifyDataHasChanged();
+      });
     }
   }
 }

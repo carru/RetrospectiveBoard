@@ -3,6 +3,7 @@ import { Category } from '../../models/Category';
 import { Topic } from 'src/app/models/Topic';
 import { TopicService } from 'src/app/services/topic.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-category',
@@ -18,7 +19,7 @@ export class CategoryComponent implements OnInit {
   presetColours: string[];
   topicBackground: string;
 
-  constructor(private topicService:TopicService, private categoryService:CategoryService) { }
+  constructor(private topicService:TopicService, private categoryService:CategoryService, private socketService:SocketService) { }
 
   ngOnInit() {
     this.topics = this.category.topics;
@@ -44,7 +45,9 @@ export class CategoryComponent implements OnInit {
   }
 
   saveCategory(category:Category) {
-    this.categoryService.updateCategory(category).subscribe();
+    this.categoryService.updateCategory(category).subscribe( () => {
+      this.socketService.notifyDataHasChanged();
+    });
   }
 
   onPlusOne(category:Category) {
