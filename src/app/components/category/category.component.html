@@ -1,14 +1,25 @@
 <mat-card [style.background-color]="category.colour" class="cardCategory">
   <mat-card-title>
     <div class="leftButtons">
-      <span class="material-icons" [(colorPicker)]="category.colour" [cpAlphaChannel]="'disabled'" [cpOutputFormat]="'hex'"
-        (colorPickerChange)="onColorPickerChange($event)" (colorPickerClose)="onColorPickerClose($event)"
-        [cpPresetColors]='presetColours'>color_lens</span>
-      <button (click)='onPlusOne(category)' mat-icon-button>
+      <span class="material-icons" [(colorPicker)]="category.colour" [cpAlphaChannel]="'disabled'"
+        [cpOutputFormat]="'hex'" (colorPickerChange)="onColorPickerChange($event)"
+        (colorPickerClose)="onColorPickerClose($event)" [cpPresetColors]='presetColours'>color_lens</span>
+      <button (click)='onClickPlusOne()' mat-icon-button>
         <mat-icon>exposure_plus_1</mat-icon>
       </button>
+      <button (click)='onClickEdit()' mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
     </div>
-    <span matBadge={{category.points}} matBadgeOverlap="false" matBadgeColor="accent">{{category.name}}</span>
+    <form *ngIf="isEditMode" class="form" (ngSubmit)="onSubmit()">
+      <mat-form-field class="input-div" appearance="outline" matBadge={{category.points}} matBadgeOverlap="false"
+        matBadgeColor="accent">
+        <input #name [(ngModel)]="category.name" matInput value="{{category.name}}" name="inputCategory"
+          (blur)="onSubmit()">
+      </mat-form-field>
+    </form>
+    <span *ngIf="!isEditMode" matBadge={{category.points}} matBadgeOverlap="false"
+      matBadgeColor="accent">{{category.name}}</span>
     <button (click)='onDelete(category)' mat-icon-button>
       <mat-icon>delete</mat-icon>
     </button>
