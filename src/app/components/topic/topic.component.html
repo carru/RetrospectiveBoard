@@ -1,7 +1,10 @@
 <button (click)='onClickEdit()' mat-icon-button>
   <mat-icon>edit</mat-icon>
 </button>
-<span class='text'>{{topic.text}}</span>
+<form *ngIf="isEditMode" class="form" (ngSubmit)="onSubmit()">
+  <input #text [(ngModel)]="topic.text" value="{{topic.text}}" name="inputTopic" (blur)="onSubmit()">
+</form>
+<span *ngIf="!isEditMode" class='text'>{{topic.text}}</span>
 <button (click)='onDelete(topic)' mat-icon-button>
   <mat-icon>delete</mat-icon>
 </button>
