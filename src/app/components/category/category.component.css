@@ -6,13 +6,22 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: stretch;
 }
 
-.leftButtons {
+.buttons, .name {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+    flex: none;
+}
+
+.name {
+    flex: auto;
 }
 
 input {
@@ -24,5 +33,5 @@ input {
 }
 
 form {
-    width: 100%;
+    flex: auto;
 }
