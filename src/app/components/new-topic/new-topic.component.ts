@@ -11,9 +11,11 @@ export class NewTopicComponent {
   text:string;
 
   onSubmit() {
-    this.addTopic.emit({
-      text: this.text
-    });
+    if (!(typeof this.text == 'undefined' || this.text == '')) {
+      this.addTopic.emit({
+        text: this.text
+      });
+    }
   }
 
 }

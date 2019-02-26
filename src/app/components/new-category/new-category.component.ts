@@ -17,9 +17,11 @@ export class NewCategoryComponent implements OnInit {
   }
 
   onSubmit() {
-    this.addCategory.emit({
-      name: this.name
-    });
+    if (!(typeof this.name == 'undefined' || this.name == '')) {
+      this.addCategory.emit({
+        name: this.name
+      });
+    }
   }
 
 }
