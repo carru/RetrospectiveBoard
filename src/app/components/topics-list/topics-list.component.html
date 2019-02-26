@@ -1,4 +1,4 @@
-<div cdkDropList class="divTopicsList" (cdkDropListDropped)="drop($event)" [cdkDropListData]="topics">
+<div cdkDropList class="divTopicsList" placeholder="Nothing here yet ¯\_(ツ)_/¯" (cdkDropListDropped)="drop($event)" [cdkDropListData]="topics">
     <app-topic class="divTopic" [ngStyle]="{'background': topicBackground}" cdkDrag *ngFor='let topic of topics' [topic]='topic'
         (deleteTopic)='deleteTopicInList($event)'></app-topic>
 </div>

@@ -1,7 +1,7 @@
 .mat-icon-button {
-    flex-grow: 0;
+    flex: none;
 }
 
 .text {
-    flex-grow: 1;
+    flex: auto;
 }
