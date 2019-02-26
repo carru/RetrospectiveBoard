@@ -11,15 +11,12 @@
         <mat-icon>edit</mat-icon>
       </button>
     </div>
-    <form *ngIf="isEditMode" class="form" (ngSubmit)="onSubmit()">
-      <mat-form-field class="input-div" appearance="outline" matBadge={{category.points}} matBadgeOverlap="false"
-        matBadgeColor="accent">
-        <input #name [(ngModel)]="category.name" matInput value="{{category.name}}" name="inputCategory"
-          (blur)="onSubmit()">
-      </mat-form-field>
-    </form>
-    <span *ngIf="!isEditMode" matBadge={{category.points}} matBadgeOverlap="false"
-      matBadgeColor="accent">{{category.name}}</span>
+    <div matBadge={{category.points}} matBadgeOverlap="false" matBadgeColor="accent">
+      <form *ngIf="isEditMode" class="form" (ngSubmit)="onSubmit()">
+        <input #name [(ngModel)]="category.name" value="{{category.name}}" name="inputCategory" (blur)="onSubmit()">
+      </form>
+      <span *ngIf="!isEditMode">{{category.name}}</span>
+    </div>
     <button (click)='onDelete(category)' mat-icon-button>
       <mat-icon>delete</mat-icon>
     </button>

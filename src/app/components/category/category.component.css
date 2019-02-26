@@ -14,3 +14,15 @@
     flex-direction: row;
     align-items: center;
 }
+
+input {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid black;
+    font: inherit;
+    text-align: center;
+    width: 100%;
+}
+
+form {
+    width: 100%;
+}
