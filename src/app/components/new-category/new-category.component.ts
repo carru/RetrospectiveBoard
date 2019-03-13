@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Category } from 'src/app/models/Category';
+import { PRESET_COLOURS } from '../category/category.component';
 
 @Component({
   selector: 'app-new-category',
@@ -19,7 +19,8 @@ export class NewCategoryComponent implements OnInit {
   onSubmit() {
     if (!(typeof this.name == 'undefined' || this.name == '')) {
       this.addCategory.emit({
-        name: this.name
+        name: this.name,
+        colour: PRESET_COLOURS[Math.floor(Math.random() * PRESET_COLOURS.length)]
       });
       this.name = ''
     }

@@ -5,6 +5,8 @@ import { TopicService } from 'src/app/services/topic.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { SocketService } from 'src/app/services/socket.service';
 
+export const PRESET_COLOURS = ['#90a4ae', '#ff8a65', '#ffd54f', '#aed581', '#4db6ac', '#4fc3f7', '#7986cb', '#ba68c8', '#e57373'];
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -26,7 +28,7 @@ export class CategoryComponent implements OnInit {
     this.isEditMode = false;
     this.topics = this.category.topics;
     this.onColorPickerChange(this.category.colour);
-    this.presetColours = ['#90a4ae', '#ff8a65', '#ffd54f', '#aed581', '#4db6ac', '#4fc3f7', '#7986cb', '#ba68c8', '#e57373'];
+    this.presetColours = PRESET_COLOURS;
   }
 
   onDelete(category:Category) {
