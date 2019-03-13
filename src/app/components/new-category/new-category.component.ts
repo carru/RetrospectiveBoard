@@ -21,6 +21,7 @@ export class NewCategoryComponent implements OnInit {
       this.addCategory.emit({
         name: this.name
       });
+      this.name = ''
     }
   }
 

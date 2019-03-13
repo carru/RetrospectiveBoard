@@ -15,6 +15,7 @@ export class NewTopicComponent {
       this.addTopic.emit({
         text: this.text
       });
+      this.text = ''
     }
   }
 
