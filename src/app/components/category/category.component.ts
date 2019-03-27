@@ -16,6 +16,7 @@ export class CategoryComponent implements OnInit {
   @Input() category:Category;
   @Output() deleteCategory: EventEmitter<Category> = new EventEmitter();
   @Output() deleteTopicInCategory: EventEmitter<Topic> = new EventEmitter();
+  @Output() onPlusOneCategory: EventEmitter<any> = new EventEmitter();
 
   topics:Topic[];
   presetColours: string[];
@@ -60,6 +61,7 @@ export class CategoryComponent implements OnInit {
     }
     this.category.points++;
     this.saveCategory(this.category);
+    this.onPlusOneCategory.emit()
   }
 
   @ViewChild("name") nameInput: ElementRef;

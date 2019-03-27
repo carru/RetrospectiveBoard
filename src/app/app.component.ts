@@ -15,6 +15,7 @@ import { SocketService } from './services/socket.service';
 export class AppComponent implements OnInit {
   uncategorizedTopics: Topic[];
   categories: Category[];
+  totalVotes;
   ioConnection: any;
 
   constructor(private topicService: TopicService, private categoryService: CategoryService, public dialog: MatDialog, private socketService: SocketService) { }
@@ -39,6 +40,11 @@ export class AppComponent implements OnInit {
     })
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
+      this.totalVotes = 0;
+      categories.forEach(c => {
+        let points = (typeof c.points == 'undefined') ? 0 : c.points;
+        this.totalVotes = this.totalVotes + points
+      })
     })
   }
 

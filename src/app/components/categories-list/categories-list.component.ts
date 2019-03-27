@@ -11,8 +11,11 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class CategoriesListComponent {
   @Input() categories:Category[];
+  @Input() totalVotes;
   @Output() deleteCategory: EventEmitter<Category> = new EventEmitter();
   @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
+
+  votesPerPerson = 3; // default value
 
   constructor(private categoryService:CategoryService, private socketService:SocketService) { }
 
@@ -25,6 +28,7 @@ export class CategoriesListComponent {
   }
 
   clearCounters() {
+    this.totalVotes = 0;
     this.categories.forEach(c => {
       c.points = undefined;
       this.categoryService.updateCategory(c).subscribe( () => {
