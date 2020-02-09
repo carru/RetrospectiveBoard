@@ -24,7 +24,7 @@ export class TopicComponent implements OnInit {
     this.deleteTopic.emit(topic);
   }
 
-  @ViewChild("text") textInput: ElementRef;
+  @ViewChild("text", { static: false }) textInput: ElementRef;
   onClickEdit() {
     this.toggleEditMode();
     if (this.isEditMode) {

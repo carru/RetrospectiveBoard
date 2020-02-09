@@ -64,7 +64,7 @@ export class CategoryComponent implements OnInit {
     this.onPlusOneCategory.emit()
   }
 
-  @ViewChild("name") nameInput: ElementRef;
+  @ViewChild("name", { static: false }) nameInput: ElementRef;
   onClickEdit() {
     this.toggleEditMode();
     if (this.isEditMode) {
