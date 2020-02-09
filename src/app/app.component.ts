@@ -3,7 +3,7 @@ import { Topic } from './models/Topic';
 import { TopicService } from './services/topic.service';
 import { Category } from './models/Category';
 import { CategoryService } from './services/category.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DeleteEverythingConfirmationDialogComponent } from './components/delete-everything-confirmation-dialog/delete-everything-confirmation-dialog.component';
 import { SocketService } from './services/socket.service';
 
