@@ -7,7 +7,7 @@ basic_scaling:
 
 handlers:
   - url: /
-  static_files: dist/retro/index.html
-  upload: dist/retro/index.html
+    static_files: dist/retro/index.html
+    upload: dist/retro/index.html
   - url: /
-  static_dir: dist/retro
+    static_dir: dist/retro
