@@ -1,0 +1,13 @@
+runtime: nodejs10
+service: default
+
+instance_class: B1
+basic_scaling:
+  max_instances: 1
+
+handlers:
+  - url: /
+  static_files: dist/retro/index.html
+  upload: dist/retro/index.html
+  - url: /
+  static_dir: dist/retro

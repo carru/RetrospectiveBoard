@@ -1,0 +1,33 @@
+name: Test and deploy to Google App Engine
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '13.x'
+      - run: npm install
+      - run: npm run build --prod
+      
+      - name: Initialize Google Cloud SDK
+        uses: zxyle/publish-gae-action@master
+        with:
+          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ secrets.PROJECT_ID }}
+
+      - name: Publish app to Google App Engine
+        run: |
+          # This client-secret.json is converted by GCP_SA_KEY.
+          gcloud auth activate-service-account ${{ secrets.GCP_SA_EMAIL }} --key-file=client-secret.json
+          gcloud config set project ${{ secrets.PROJECT_ID }}
+          gcloud -q app deploy app.yaml --promote
