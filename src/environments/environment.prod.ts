@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://vmlcatsinv.qad.com:3000/api/',
-  socketUrl: 'http://vmlcatsinv.qad.com:3001/'
+  apiUrl: 'https://api-dot-retroboard-267721.appspot.com:3000/api/',
+  socketUrl: 'https://api-dot-retroboard-267721.appspot.com:3001/'
 };
